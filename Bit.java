@@ -55,7 +55,6 @@ public class Bit {
 				new_bit.clear();
 			}
 		}
-
 		return new_bit;
 	}
 
@@ -70,7 +69,6 @@ public class Bit {
 		else if(other_bit.getValue() == true) {
 			new_bit.set();
 		}
-
 		return new_bit;
 	}
 
@@ -82,7 +80,6 @@ public class Bit {
 		if(bit_value == other_bit.getValue()) {
 			return new Bit(false);
 		}
-
 		return or(other_bit);
 	}
 
@@ -96,7 +93,6 @@ public class Bit {
 		else if(new_bit.getValue() == false) {
 			new_bit.set();
 		}
-
 		return new_bit;
 	}
 
@@ -111,7 +107,6 @@ public class Bit {
 		else if(bit_value == false) {
 			output = "f";
 		}
-
 		return output;
 	}
 }

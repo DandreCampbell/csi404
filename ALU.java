@@ -7,7 +7,6 @@ public class ALU {
             bits[i] = value % 2 == 1 ? new Bit(true) : new Bit(false);
             value /= 2;
         }
-
         return bits;
     }
 
@@ -68,7 +67,6 @@ public class ALU {
         else {
             System.out.println("Invalid number.");
         }
-
         return new Longword();
     }
 }

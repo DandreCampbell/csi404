@@ -32,7 +32,6 @@ public class Longword {
         for(int i = 0; i < 32; i++) {
             and.setBit(i, longword[i].and(other_word.getBit(i)));
         }
-
         return and;
     } 
 
@@ -46,7 +45,6 @@ public class Longword {
         for(int i = 0; i < 32; i++) {
             or.setBit(i, longword[i].or(other_word.getBit(i)));
         }
-
         return or;
     } 
 
@@ -61,7 +59,6 @@ public class Longword {
         for(int i = 0; i < 32; i++) {
             xor.setBit(i, longword[i].xor(other_word.getBit(i)));
         }
-
         return xor;
     } 
     
@@ -75,7 +72,6 @@ public class Longword {
         for(int i = 0; i < 32; i++) {
             not.setBit(i, longword[i].not());
         }
-
         return not;
     } 
 
@@ -94,7 +90,6 @@ public class Longword {
             index = (amount + i) % 31;
             rightShift.setBit(index, longword[i]);
         }
-
         return rightShift;
     } 
 
@@ -113,7 +108,6 @@ public class Longword {
             index = (amount + i) % 31;
             leftShift.setBit(i, longword[index]);
         }
-
         return leftShift;
     } 
 
@@ -132,7 +126,6 @@ public class Longword {
                 output += "f,";
             }
         }
-
         return output;
     } 
 
@@ -148,7 +141,6 @@ public class Longword {
                 unsigned +=  Math.pow(2, i);
             }
         }
-
         return unsigned;
     } 
 
@@ -164,7 +156,6 @@ public class Longword {
                 signed += Math.pow(2, i);
             }
         }
-
         return signed;
     } 
 
