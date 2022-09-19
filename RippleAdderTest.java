@@ -1,8 +1,4 @@
 public class RippleAdderTest {
-    /*
-     * I know the code works. I used the algorithm given in class but for
-     * some reason it stills fails the test cases.
-     */
 
     public static void test_add() throws Exception {
         if(RippleAdder.add(new Longword(7), new Longword(5)).getSigned() != 12) {
