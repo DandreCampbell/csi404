@@ -3,16 +3,26 @@ public class ALU {
     public static Bit[] bit_compare(int value) {
         Bit[] bits = new Bit[4];
 
-        for(int i = 0; i < 4; i++) {
-            bits[i] = value % 2 == 1 ? new Bit(true) : new Bit(false);
+        for(int i = 3; i >= 0; i--) {
+            if(value % 2 == 1) {
+                bits[i] = new Bit(true);
+            }
+            else {
+                bits[i] = new Bit(false);
+            }
             value /= 2;
         }
+
+        /*
+        for(int i = 0; i < 4; i++) {
+            if(bits[i].getValue() =)
+        }
+        */
         return bits;
     }
 
     public static Longword doOp(Bit[] operation, Longword a, Longword b) {
         int operation_value = 0;
-        int b_value = 0;
 
         /* 
             Convert Bits to decimal value
@@ -20,15 +30,6 @@ public class ALU {
         for(int i = 0; i < 4; i++) {
             if(operation[i].getValue() == true) {
                 operation_value += Math.pow(2, i);
-            }
-        }
-
-        /*
-            Longword b as a decimal value
-        */
-        for(int j = 0; j < 5; j++) {
-            if(b.getBit(j).getValue() == true) {
-                b_value += Math.pow(2, j);
             }
         }
 
@@ -49,11 +50,11 @@ public class ALU {
         }
         //  “a” is the value to shift, “b” is the amount to shift it; ignore all but the lowest 5 bits
         else if(operation_value == 12) {
-            return a.leftShift(b_value);
+            return a.leftShift(b.getSigned());
         }
         //“a” is the value to shift, “b” is the amount to shift it; ignore all but the lowest 5 bits
         else if(operation_value == 13) {
-            return a.rightShift(b_value);
+            return a.rightShift(b.getSigned());
         }
         else if(operation_value == 14) {
             return RippleAdder.add(a, b);

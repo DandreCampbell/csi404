@@ -1,12 +1,10 @@
 public class RippleAdder {
-    /*
-     * I know the code works. I used the algorithm given in class but for
-     * some reason it stills fails the test cases.
-     */
     
-    /* Iterates through both longwords and adds their values */
+    /* 
+        Iterates through both longwords and adds their values 
+    */
     public static Longword add(Longword a, Longword b) {
-        Longword result = new Longword(0);
+        Longword result = new Longword();
         Bit carry = new Bit(false);
 
         for(int i = 31; i >= 0; i--) {
@@ -16,7 +14,9 @@ public class RippleAdder {
         return result;
     }
     
-    /* Iterates through both longwords and subtracts their values */
+    /* 
+        Iterates through both longwords and subtracts their values 
+    */
     public static Longword subtract(Longword a, Longword b) {
         Longword result = add(a, add(b.not(), new Longword(1)));
 

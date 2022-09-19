@@ -45,38 +45,30 @@ public class Bit {
 	// Performs and on two bits and returns a new bit set to the result
 	// Both bit values must be true for the new bit to be true
 	public Bit and(Bit other_bit) {
-		Bit new_bit = new Bit();
 
 		if(bit_value == true) {
 			if(other_bit.getValue() == true) {
-				new_bit.set();
-			}
-			else if(other_bit.getValue() == false) {
-				new_bit.clear();
+				return new Bit(true);
 			}
 		}
-		return new_bit;
+		return new Bit();
 	}
 
 	// Performs or on two bits and returns a new bit set to the result
 	// One of the bit values must be true for the new bit to be true
 	public Bit or(Bit other_bit) {
-		Bit new_bit = new Bit();
-
 		if(bit_value == true) {
-			new_bit.set();
+			return new Bit(true);
 		}
 		else if(other_bit.getValue() == true) {
-			new_bit.set();
+			return new Bit(true);
 		}
-		return new_bit;
+		return new Bit(false);
 	}
 
 	// Performs xor on two bits and returns a new bit set to the result
 	// Either bit values can be true but not both
 	public Bit xor(Bit other_bit) {
-		//Bit new_bit = new Bit(false);
-
 		if(bit_value == other_bit.getValue()) {
 			return new Bit(false);
 		}
@@ -85,15 +77,13 @@ public class Bit {
 
 	// Performs not on the existing bit, returning the result as a new bit
 	public Bit not() {
-		Bit new_bit = new Bit();
-
-		if(new_bit.getValue() == true) {
-			new_bit.clear();
+		if(bit_value == true) {
+			return new Bit(false);
 		}
-		else if(new_bit.getValue() == false) {
-			new_bit.set();
+		else if(bit_value == false) {
+			return new Bit(true);
 		}
-		return new_bit;
+		return new Bit(false);
 	}
 
 	// Returns “t” or “f” depending on bit_value

@@ -81,7 +81,7 @@ public class Longword {
     public Longword rightShift(int amount) {
         Longword rightShift = new Longword();
         int index = 0;
-        
+    
         /*
             Iterate through word and move the true value bits to the right 
             by the give amount
