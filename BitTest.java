@@ -2,9 +2,9 @@ public class BitTest {
 
 	public static void test_setValue() throws Exception {
 		Bit test = new Bit(false);
-		test.set(false);
+		test.set(true);
 
-		if(test.getValue() != false) {
+		if(test.getValue() != true) {
 			throw new Exception("set(boolean) - Failed");
 		}
 		else {
@@ -14,20 +14,28 @@ public class BitTest {
 
 	public static void test_toggle() throws Exception {
 		Bit test = new Bit(false);
-		test.toggle();
 
+		test.toggle();
 		if(test.getValue() != true) {
-			throw new Exception("toggle() - Failed");
+			throw new Exception("toggle() 1 - Failed");
 		}
 		else {
-			System.out.println("toggle() - Success");
+			System.out.println("toggle() 1 - Success");
+		}
+
+		test.toggle();
+		if(test.getValue() != false) {
+			throw new Exception("toggle() 2 - Failed");
+		}
+		else {
+			System.out.println("toggle() 2 - Success");
 		}
 	}
 
 	public static void test_set() throws Exception {
 		Bit test = new Bit(false);
-		test.set();
 
+		test.set();
 		if(test.getValue() != true) {
 			throw new Exception("set() - Failed");
 		}
@@ -37,9 +45,9 @@ public class BitTest {
 	}
 
 	public static void test_clear() throws Exception {
-		Bit test = new Bit(false);
-		test.clear();
+		Bit test = new Bit(true);
 
+		test.clear();
 		if(test.getValue() != false) {
 			throw new Exception("clear() - Failed");
 		}
@@ -49,13 +57,18 @@ public class BitTest {
 	}
 
 	public static void test_getValue() throws Exception {
-		Bit test = new Bit(false);
-
-		if(test.getValue() != false) {
-			throw new Exception("getValue() - Failed");
+		if(new Bit(false).getValue() != false) {
+			throw new Exception("getValue() 1 - Failed");
 		}
 		else {
-			System.out.println("getValue() - Success");
+			System.out.println("getValue() 1 - Success");
+		}
+
+		if(new Bit(true).getValue() != true) {
+			throw new Exception("getValue() 2 - Failed");
+		}
+		else {
+			System.out.println("getValue() 2 - Success");
 		}
 	}
 
@@ -63,21 +76,35 @@ public class BitTest {
 		Bit test = new Bit(true);
 
 		if(test.and(new Bit(true)).getValue() != true) {
-			throw new Exception("and(Bit) - Failed");
+			throw new Exception("and(Bit) 1 - Failed");
 		}
 		else {
-			System.out.println("and(Bit) - Success");
+			System.out.println("and(Bit) 1 - Success");
+		}
+
+		if(test.and(new Bit(false)).getValue() != false) {
+			throw new Exception("and(Bit) 2 - Failed");
+		}
+		else {
+			System.out.println("and(Bit) 2 - Success");
 		}
 	}
 
 	public static void test_or() throws Exception {
-		Bit test = new Bit(false);
+		Bit test = new Bit(true);
 
 		if(test.or(new Bit(true)).getValue() != true) {
-			throw new Exception("or(Bit) - Failed");
+			throw new Exception("or(Bit) 1 - Failed");
 		}
 		else {
-			System.out.println("or(Bit) - Success");
+			System.out.println("or(Bit) 1 - Success");
+		}
+
+		if(test.or(new Bit(false)).getValue() != true) {
+			throw new Exception("or(Bit) 2 - Failed");
+		}
+		else {
+			System.out.println("or(Bit) 2 - Success");
 		}
 	}
 
@@ -85,36 +112,49 @@ public class BitTest {
 		Bit test = new Bit(true);
 
 		if(test.xor(new Bit(true)).getValue() != false) {
-			throw new Exception("xor(Bit) - Failed");
-		}
-		else if(test.xor(new Bit(false)).getValue() != true) {
-			throw new Exception("xor(Bit) - Failed");
+			throw new Exception("xor(Bit) 1 - Failed");
 		}
 		else {
-			System.out.println("xor(Bit) - Success");
+			System.out.println("xor(Bit) 1 - Success");
+		}
+
+		if(test.xor(new Bit(false)).getValue() != true) {
+			throw new Exception("xor(Bit) 2 - Failed");
+		}
+		else {
+			System.out.println("xor(Bit) 2 - Success");
 		}
 	}
 
 	public static void test_not() throws Exception {
-		Bit test = new Bit(false);
-
-		if(test.not().getValue() != true) {
-			throw new Exception("not() - Failed");
+		if(new Bit(false).not().getValue() != true) {
+			throw new Exception("not() 1 - Failed");
 		}
 		else {
-			System.out.println("not() - Success");
+			System.out.println("not() 1 - Success");
+		}
+
+		if(new Bit(true).not().getValue() != false) {
+			throw new Exception("not() 2 - Failed");
+		}
+		else {
+			System.out.println("not() 2 - Success");
 		}
 	}
 
 	public static void test_toString() throws Exception {
-		Bit test = new Bit(true);
-		String expected = "t";
-
-		if(test.toString().equals(expected)) {
-			System.out.println("toString() - Success");
+		if(new Bit(true).toString().equals("t")) {
+			System.out.println("toString() 1 - Success");
 		}
 		else {
-			throw new Exception("toString() - Failed");
+			throw new Exception("toString() 1 - Failed");
+		}
+
+		if(new Bit(false).toString().equals("f")) {
+			System.out.println("toString() 2 - Success");
+		}
+		else {
+			throw new Exception("toString() 2 - Failed");
 		}
 	}
 

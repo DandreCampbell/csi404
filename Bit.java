@@ -72,7 +72,8 @@ public class Bit {
 		if(bit_value == other_bit.getValue()) {
 			return new Bit(false);
 		}
-		return or(other_bit);
+		return new Bit(true);
+		//return or(other_bit);
 	}
 
 	// Performs not on the existing bit, returning the result as a new bit

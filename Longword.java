@@ -80,15 +80,10 @@ public class Longword {
     */
     public Longword rightShift(int amount) {
         Longword rightShift = new Longword();
-        int index = 0;
-    
-        /*
-            Iterate through word and move the true value bits to the right 
-            by the give amount
-        */
-        for(int i = 0; i < 31; i++) {
-            index = (amount + i) % 31;
-            rightShift.setBit(index, longword[i]);
+
+        for(int i = 0; i + amount < 32; i++) {
+            rightShift.setBit(i, longword[i + amount]);
+            //rightShift.setBit(i, new Bit());
         }
         return rightShift;
     } 
@@ -98,16 +93,10 @@ public class Longword {
     */
     public Longword leftShift(int amount) {
         Longword leftShift = new Longword();
-        int index = 0;
-        
-        /*
-            Iterate through word and move the true value bits to the left 
-            by the give amount
-        */
-        for(int i = 0; i < 31; i++) {
-            index = amount + i;
-            leftShift.setBit(i, longword[index]);
-            longword[i].set(false);
+
+        for(int i = 0; i < 32 - amount; i++) {
+            leftShift.setBit(i, longword[i + amount]);
+            leftShift.setBit(i , new Bit());
         }
         return leftShift;
     } 
@@ -131,7 +120,7 @@ public class Longword {
     } 
 
     /*
-        Returns the value of this longword as a long
+        Iterates through longword and returns the value as an long
     */
     public long getUnsigned() {
         long unsigned = 0L;
@@ -146,7 +135,7 @@ public class Longword {
     } 
 
     /*
-        Returns the value of this longword as an int
+        Iterates through longword and returns the value as an int
     */
     public int getSigned() {
         int signed = 0;
