@@ -29,6 +29,7 @@ public class LongwordTest {
 
         /*
         if(test.and(new Longword(0)).getSigned() != 0) {
+            
             throw new Exception("and(other) - Failed");
         }
          */
@@ -81,6 +82,7 @@ public class LongwordTest {
         Longword test = new Longword(2);
 
         if(test.rightShift(1).getSigned() != 1) {
+            System.out.println(test.rightShift(1).getSigned());
             System.out.println("rightShift() - Failed");
             //throw new Exception("rightShift() 1 - Failed");
         }
@@ -90,14 +92,18 @@ public class LongwordTest {
     }
 
     public static void test_leftShift() throws Exception {
-        Longword test = new Longword(2);
-
-        if(test.leftShift(1).getSigned() != 4) {
-            System.out.println("leftShift() - Failed");
-            //throw new Exception("leftShift() - Failed");
+        Longword test = new Longword(1);
+        
+        if(test.leftShift(1).getUnsigned() == 2) {
+            System.out.println(test.leftShift(1).getUnsigned());
+            System.out.print("leftShift() 2 - Success");
+        }
+        if(test.leftShift(1).getUnsigned() == 4) {
+            System.out.println(test.leftShift(1).getUnsigned());
+            System.out.println("leftShift() 1 - Success");
         }
         else {
-            System.out.println("leftShift() - Success");
+            System.out.println("Failed");
         }
     }
 
@@ -183,5 +189,9 @@ public class LongwordTest {
         test_set();
         
         System.out.println();
+    }
+
+    public static void main(String[] args) throws Exception {
+        test_leftShift();
     }
 }

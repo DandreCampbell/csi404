@@ -96,8 +96,9 @@ public class Longword {
 
         for(int i = 0; i < 32 - amount; i++) {
             leftShift.setBit(i, longword[i + amount]);
-            leftShift.setBit(i , new Bit());
+            //leftShift.setBit(i , new Bit());
         }
+        
         return leftShift;
     } 
 
