@@ -1,17 +1,12 @@
 public class MemoryTest {
 
-
-    public static void test_read() throws Exception {
-
-    }
-
-    public static void test_write() throws Exception {
-
-    }
-
     public static void runTests() throws Exception {
-        test_read();
-        test_write();
+        Memory mem = new Memory();
+        mem.write(new Longword(), new Longword());
+
+        if(mem.read(new Longword(100)).equals(null)) {
+
+        }
 
         System.out.println();
     }

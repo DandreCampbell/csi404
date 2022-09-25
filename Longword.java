@@ -83,7 +83,6 @@ public class Longword {
 
         for(int i = 0; i + amount < 32; i++) {
             rightShift.setBit(i, longword[i + amount]);
-            //rightShift.setBit(i, new Bit());
         }
         return rightShift;
     } 
@@ -96,7 +95,6 @@ public class Longword {
 
         for(int i = 0; i < 32 - amount; i++) {
             leftShift.setBit(i, longword[i + amount]);
-            //leftShift.setBit(i , new Bit());
         }
         
         return leftShift;
@@ -127,7 +125,7 @@ public class Longword {
         long unsigned = 0L;
 
         // Iterates through list and converts to decimal
-        for(int i = 0; i < 32; i++) {
+        for(int i = 31; i >= 0; i--) {
             if(longword[i].getValue() == true) {
                 unsigned +=  Math.pow(2, i);
             }
@@ -142,7 +140,7 @@ public class Longword {
         int signed = 0;
 
         // Iterates through list and converts to decimal
-        for(int i = 0; i < 32; i++) {
+        for(int i = 31; i >= 0; i--) {
             if(longword[i].getValue() == true) {
                 signed += Math.pow(2, i);
             }

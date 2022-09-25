@@ -103,7 +103,7 @@ public class LongwordTest {
             System.out.println("leftShift() 1 - Success");
         }
         else {
-            System.out.println("Failed");
+            System.out.println("leftShift() -  Failed");
         }
     }
 

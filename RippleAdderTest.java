@@ -10,6 +10,12 @@ public class RippleAdderTest {
         else {
             System.out.println("add() - Success");
         }
+
+        if(RippleAdder.add(new Longword(1), new Longword(0)).getSigned() != 1) {
+            System.out.println(new Longword(1).getSigned());
+            System.out.println(new Longword(0).getSigned());
+            System.out.println(RippleAdder.add(new Longword(7), new Longword(5)).getSigned());
+        }
     }
 
     public static void test_subtract() throws Exception {

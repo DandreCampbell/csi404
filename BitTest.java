@@ -2,13 +2,21 @@ public class BitTest {
 
 	public static void test_setValue() throws Exception {
 		Bit test = new Bit(false);
+		
 		test.set(true);
-
 		if(test.getValue() != true) {
-			throw new Exception("set(boolean) - Failed");
+			throw new Exception("set(boolean) 1 - Failed");
 		}
 		else {
-			System.out.println("set(boolean) - Success");
+			System.out.println("set(boolean) 1 - Success");
+		}
+
+		test.set(false);
+		if(test.getValue() != false) {
+			throw new Exception("set(boolean) 2 - Failed");
+		}
+		else {
+			System.out.println("set(boolean) 2 - Success");
 		}
 	}
 
