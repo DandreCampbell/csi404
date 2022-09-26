@@ -1,6 +1,6 @@
 public class Longword {
 
-    private static Bit[] longword = new Bit[32];
+    private Bit[] longword = new Bit[32];
 
     // Constructor used for new or empty longword array
     public Longword() {
@@ -14,12 +14,12 @@ public class Longword {
 
     // Get bit at given index
     public Bit getBit(int index) {
-        return longword[index];
+        return this.longword[index];
     } 
 
     // Set bit at given index with given value
     public void setBit(int index, Bit value) {
-        longword[index] = value;   
+        this.longword[index] = value;   
     }   
 
     /*
@@ -30,7 +30,7 @@ public class Longword {
         Longword and = new Longword();
 
         for(int i = 0; i < 32; i++) {
-            and.setBit(i, longword[i].and(other_word.getBit(i)));
+            and.setBit(i, this.longword[i].and(other_word.getBit(i)));
         }
         return and;
     } 
@@ -43,7 +43,7 @@ public class Longword {
         Longword or = new Longword();
 
         for(int i = 0; i < 32; i++) {
-            or.setBit(i, longword[i].or(other_word.getBit(i)));
+            or.setBit(i, this.longword[i].or(other_word.getBit(i)));
         }
         return or;
     } 
@@ -57,7 +57,7 @@ public class Longword {
 
         // Only false if both words have same value
         for(int i = 0; i < 32; i++) {
-            xor.setBit(i, longword[i].xor(other_word.getBit(i)));
+            xor.setBit(i, this.longword[i].xor(other_word.getBit(i)));
         }
         return xor;
     } 
@@ -70,7 +70,7 @@ public class Longword {
         Longword not = new Longword();
         
         for(int i = 0; i < 32; i++) {
-            not.setBit(i, longword[i].not());
+            not.setBit(i, this.longword[i].not());
         }
         return not;
     } 
@@ -82,7 +82,7 @@ public class Longword {
         Longword rightShift = new Longword();
 
         for(int i = 0; i + amount < 32; i++) {
-            rightShift.setBit(i, longword[i + amount]);
+            rightShift.setBit(i, this.longword[i + amount]);
         }
         return rightShift;
     } 
@@ -93,10 +93,9 @@ public class Longword {
     public Longword leftShift(int amount) {
         Longword leftShift = new Longword();
 
-        for(int i = 0; i < 32 - amount; i++) {
-            leftShift.setBit(i, longword[i + amount]);
+        for(int i = 0; i + amount < 32; i++) {
+            leftShift.setBit(i + amount, this.longword[i]);
         }
-        
         return leftShift;
     } 
 
@@ -108,10 +107,10 @@ public class Longword {
         String output = "";
 
         for(int i = 31; i >= 0; i--) {
-            if(longword[i].getValue() == true) {
+            if(this.longword[i].getValue() == true) {
                 output += "t,";
             }
-            else if(longword[i].getValue() == false) {
+            else if(this.longword[i].getValue() == false) {
                 output += "f,";
             }
         }
@@ -126,7 +125,7 @@ public class Longword {
 
         // Iterates through list and converts to decimal
         for(int i = 31; i >= 0; i--) {
-            if(longword[i].getValue() == true) {
+            if(this.longword[i].getValue() == true) {
                 unsigned +=  Math.pow(2, i);
             }
         }
@@ -141,7 +140,7 @@ public class Longword {
 
         // Iterates through list and converts to decimal
         for(int i = 31; i >= 0; i--) {
-            if(longword[i].getValue() == true) {
+            if(this.longword[i].getValue() == true) {
                 signed += Math.pow(2, i);
             }
         }
@@ -175,10 +174,10 @@ public class Longword {
         // Assign boolean value to each bit in longword
         for(int j = 31; j >= 0; j--) {
             if(binary[j] == 1) {
-                longword[j] = new Bit(true);
+                this.longword[j] = new Bit(true);
             }
             else if(binary[j] == 0) {
-                longword[j] = new Bit(false);
+                this.longword[j] = new Bit(false);
             }
         }
 
@@ -186,9 +185,9 @@ public class Longword {
         if(temp < 0) {
             Longword a = not();
             for(int j = 0; j < 31; j++) {
-                longword[j] = a.getBit(j);
+                this.longword[j] = a.getBit(j);
             }
-            longword[0] = new Bit(true);
+            this.longword[0] = new Bit(true);
         }
     } 
 }

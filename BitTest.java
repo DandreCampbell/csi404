@@ -1,5 +1,6 @@
 public class BitTest {
 
+	// Test case for set(boolean)
 	public static void test_setValue() throws Exception {
 		Bit test = new Bit(false);
 		
@@ -20,6 +21,7 @@ public class BitTest {
 		}
 	}
 
+	// Test case for toggle()
 	public static void test_toggle() throws Exception {
 		Bit test = new Bit(false);
 
@@ -40,6 +42,7 @@ public class BitTest {
 		}
 	}
 
+	// Test case for set()
 	public static void test_set() throws Exception {
 		Bit test = new Bit(false);
 
@@ -52,6 +55,7 @@ public class BitTest {
 		}
 	}
 
+	// Test case for clear()
 	public static void test_clear() throws Exception {
 		Bit test = new Bit(true);
 
@@ -64,6 +68,7 @@ public class BitTest {
 		}
 	}
 
+	// Test case for getValue()
 	public static void test_getValue() throws Exception {
 		if(new Bit(false).getValue() != false) {
 			throw new Exception("getValue() 1 - Failed");
@@ -80,6 +85,7 @@ public class BitTest {
 		}
 	}
 
+	// Test case for and(Bit)
 	public static void test_and() throws Exception {
 		Bit test = new Bit(true);
 
@@ -98,6 +104,7 @@ public class BitTest {
 		}
 	}
 
+	// Test case for or(Bit)
 	public static void test_or() throws Exception {
 		Bit test = new Bit(true);
 
@@ -116,6 +123,7 @@ public class BitTest {
 		}
 	}
 
+	// Test case for xor(Bit)
 	public static void test_xor() throws Exception {
 		Bit test = new Bit(true);
 
@@ -134,6 +142,7 @@ public class BitTest {
 		}
 	}
 
+	// Test case for not()
 	public static void test_not() throws Exception {
 		if(new Bit(false).not().getValue() != true) {
 			throw new Exception("not() 1 - Failed");
@@ -150,6 +159,7 @@ public class BitTest {
 		}
 	}
 
+	// Test case for toString()
 	public static void test_toString() throws Exception {
 		if(new Bit(true).toString().equals("t")) {
 			System.out.println("toString() 1 - Success");

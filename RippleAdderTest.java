@@ -1,5 +1,6 @@
 public class RippleAdderTest {
 
+    // Test case for add(Longword, Longword)
     public static void test_add() throws Exception {
         if(RippleAdder.add(new Longword(7), new Longword(5)).getSigned() != 12) {
             System.out.println(new Longword(7).getSigned());
@@ -18,6 +19,7 @@ public class RippleAdderTest {
         }
     }
 
+    // Test case for subtract(Longword, Longword)
     public static void test_subtract() throws Exception {
         if(RippleAdder.subtract(new Longword(7), new Longword(5)).getSigned() != 2) {
             System.out.println("7 - 5 : Failed");
