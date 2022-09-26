@@ -7,6 +7,10 @@ public class Computer {
 
     }
 
+    /*
+        Simulates that computer is on and will run until 
+        bit value is  false; 
+    */
     public void run() {
 
         while(on_switch.getValue() == true) {

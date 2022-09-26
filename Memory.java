@@ -5,12 +5,12 @@ public class Memory {
 
     public Memory() {
         for(int i = 0; i < 8192; i++) {
-            this.storage[i] = new Bit();
+            this.storage[i] = new Bit(true);
         }
     }
 
     /*
-     
+        Reads the bits stores in "memory"
     */
     public Longword read(Longword address) {
         Longword read = new Longword();
@@ -20,25 +20,30 @@ public class Memory {
         }
         return read;
     }
-
+    
     /*
-     
+        writes news bites into "memory"
     */
     public void write(Longword address, Longword value) {
         for(int i = 0; i < 8; i++) {
-            this.storage[value.getSigned() * i] = address.getBit(i);
+            this.storage[address.getSigned() * i] = value.getBit(i);
         }
     }
 
     /*
-     
+        Returns string value of storage
     */
     @Override
     public String toString() {
         String output = "";
 
         for(int i = 0; i < 1024; i++) {
-            
+            if(this.storage[i].getValue() == true) {
+                output += "t";
+            }
+            else if(this.storage[i].getValue() == false) {
+                output += "f";
+            }
         }
 
         return output;
