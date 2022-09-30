@@ -45,7 +45,6 @@ public class Memory {
                 output += "f";
             }
         }
-
         return output;
     }
 }

@@ -2,32 +2,29 @@ public class RippleAdderTest {
 
     // Test case for add(Longword, Longword)
     public static void test_add() throws Exception {
-        if(RippleAdder.add(new Longword(7), new Longword(5)).getSigned() == 12) {
-            System.out.println(new Longword(7).getSigned());
-            System.out.println(new Longword(5).getSigned());
-            System.out.println(RippleAdder.add(new Longword(7), new Longword(5)).getSigned());
+        Longword result = RippleAdder.add(new Longword(7), new Longword(5));
+
+        if(result.getSigned() != 12) {
+            throw new Exception("add() - Failed");
         }
         else {
             System.out.println("add() - Success");
-        }
-
-        if(RippleAdder.add(new Longword(1), new Longword(0)).getSigned() != 1) {
-            System.out.println(new Longword(1).getSigned());
-            System.out.println(new Longword(0).getSigned());
-            System.out.println(RippleAdder.add(new Longword(7), new Longword(5)).getSigned());
+            System.out.println("Expected: 12");
+            System.out.printf("Result: %d \n", result.getSigned());
         }
     }
 
     // Test case for subtract(Longword, Longword)
     public static void test_subtract() throws Exception {
-        if(RippleAdder.subtract(new Longword(7), new Longword(5)).getUnsigned() == 2) {
-            System.out.println("subtract() - Success");
-        }
-        else if(RippleAdder.subtract(new Longword(2), new Longword(1)).getUnsigned() == 1) {
-            System.out.println("subtract() - Success");
+        Longword result = RippleAdder.subtract(new Longword(7), new Longword(5));
+
+        if(result.getSigned() != 2) {
+            System.out.println("subtract() - Failed");
         }
         else {
-            System.out.println("subtract() - Failed");
+            System.out.println("subtract() - Success");
+            System.out.println("Expected: 2");
+            System.out.printf("Result: %d \n", result.getSigned());
         }
     }
 

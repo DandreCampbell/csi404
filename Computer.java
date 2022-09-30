@@ -2,6 +2,8 @@ public class Computer {
 
     Bit on_switch = new Bit();
     private Memory mem = new Memory();
+    Longword pc = new Longword();
+    Longword currentInstruction = new Longword();
 
     public Computer() {
 
@@ -9,7 +11,7 @@ public class Computer {
 
     /*
         Simulates that computer is on and will run until 
-        bit value is  false; 
+        bit value is false; 
     */
     public void run() {
 
@@ -22,7 +24,8 @@ public class Computer {
     }
 
     public void fetch() {
-
+        this.currentInstruction = this.mem.read(pc);
+        this.pc = RippleAdder.add(pc, new Longword(2));
     }
 
     public void decode() {

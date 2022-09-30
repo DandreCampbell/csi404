@@ -1,7 +1,7 @@
 public class Multiplier {
     
 	/*
-	 	Iteraetes through both the longwords while using RippleAdder 
+	 	Iterates through both the longwords while using RippleAdder 
 		to get the multiple of both longwords
 	*/
     public static Longword multiply(Longword a, Longword b) {
