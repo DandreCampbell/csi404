@@ -31,7 +31,7 @@ public class Memory {
     }
 
     /*
-        Returns string value of storage
+        Returns storage as a string value
     */
     @Override
     public String toString() {
