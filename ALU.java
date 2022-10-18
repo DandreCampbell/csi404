@@ -34,15 +34,23 @@ public class ALU {
         the given int value
     */
     public static boolean bit_compare(Bit[] operation, int value) {
+        /* 
+        // Bit by Bit comparison
+        for(int i = 0; i < 4; i++) {
+            if(bit_conversion(value)[i].equals(operation[i])) {
+                return true;
+            }
+        }  
+        */
+        // Bit array comparison 
         if(operation.equals(bit_conversion(value))) {
             return true;
         }
+        
         return false;
     }
 
-
     public static Longword doOp(Bit[] operation, Longword a, Longword b) {
-        Longword result = new Longword();
         int shift = 0;
 
         /* 
@@ -50,51 +58,55 @@ public class ALU {
             8: and(), 9: or(), 10: xor(), 11: not(), 12: leftShift()
             13: rightShift(), 14: add(), 15: subtract(), 16: multiply()
         */
-        if(bit_compare(operation, 8)) {
-            result = a.and(b);
+        if(bit_compare(operation, 8) == false) {
+            return a.and(b);
         }
-        else if(bit_compare(operation, 9)) {
-            result = a.or(b);
+        else if(bit_compare(operation, 9)  == false) {
+            return a.or(b);
         }
-        else if(bit_compare(operation, 10)) {
-            result = a.xor(b);
+        else if(bit_compare(operation, 10) == true) {
+            return a.xor(b);
         }
-        else if(bit_compare(operation, 11)) {
-            result = a.not();
+        else if(bit_compare(operation, 11) == true) {
+            return a.not();
         }
         //  “a” is the value to shift, “b” is the amount to shift it; ignore all but the lowest 5 bits
-        else if(bit_compare(operation, 12)) {
+        else if(bit_compare(operation, 12) == true) {
             shift = 0;
             for(int i = 5; i >= 0; i--) {
                 if(b.getBit(i).getValue() == true) {
-                    shift = (int) Math.pow(2, i);
+                    shift += (int) Math.pow(2, i);
                 }
             }
-            result = a.leftShift(shift);
+            return a.leftShift(shift);
         }
         //“a” is the value to shift, “b” is the amount to shift it; ignore all but the lowest 5 bits
-        else if(bit_compare(operation, 13)) {
+        else if(bit_compare(operation, 13) == true) {
             shift = 0;
             for(int i = 5; i >= 0; i--) {
                 if(b.getBit(i).getValue() == true) {
-                    shift = (int) Math.pow(2, i);
+                    shift += (int) Math.pow(2, i);
                 }
             }
-            result = a.rightShift(shift);
+            return a.rightShift(shift);
         }
-        else if(bit_compare(operation, 14)) {
-            result = RippleAdder.add(a, b);
+        else if(bit_compare(operation, 14) == true) {
+            return RippleAdder.add(a, b);
         }
-        else if(bit_compare(operation, 15)) {
-            result = RippleAdder.subtract(a, b);
+        else if(bit_compare(operation, 15) == true) {
+            return RippleAdder.subtract(a, b);
         }
-        else if(bit_compare(operation, 16)) {
-            result = Multiplier.multiply(a, b);
+        else if(bit_compare(operation, 16) == true) {
+            return Multiplier.multiply(a, b);
         }
         
-        return result;
+        return new Longword(1);
     }
-
+    
+    /*
+        Gets the 4 bit boolean value of "operation" and returns
+        it as a string
+    */
     public static String toString(Bit[] operation) {
         String output = "";
         for(int i = 3; i >= 0; i--) {

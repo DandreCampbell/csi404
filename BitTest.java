@@ -6,19 +6,21 @@ public class BitTest {
 		
 		test.set(true);
 		if(test.getValue() != true) {
-			throw new Exception("set(boolean) 1 - Failed");
+			throw new Exception("set(boolean) - Failed");
 		}
 		else {
-			System.out.println("set(boolean) 1 - Success");
+			System.out.println("set(boolean) - Success");
 		}
 
 		test.set(false);
 		if(test.getValue() != false) {
-			throw new Exception("set(boolean) 2 - Failed");
+			throw new Exception("set(boolean) - Failed");
 		}
 		else {
-			System.out.println("set(boolean) 2 - Success");
+			System.out.println("set(boolean) - Success");
 		}
+
+		System.out.println();
 	}
 
 	// Test case for toggle()
@@ -27,19 +29,21 @@ public class BitTest {
 
 		test.toggle();
 		if(test.getValue() != true) {
-			throw new Exception("toggle() 1 - Failed");
+			throw new Exception("toggle() - Failed");
 		}
 		else {
-			System.out.println("toggle() 1 - Success");
+			System.out.println("toggle() - Success");
 		}
 
 		test.toggle();
 		if(test.getValue() != false) {
-			throw new Exception("toggle() 2 - Failed");
+			throw new Exception("toggle() - Failed");
 		}
 		else {
-			System.out.println("toggle() 2 - Success");
+			System.out.println("toggle() - Success");
 		}
+
+		System.out.println();
 	}
 
 	// Test case for set()
@@ -53,6 +57,8 @@ public class BitTest {
 		else {
 			System.out.println("set() - Success");
 		}
+
+		System.out.println();
 	}
 
 	// Test case for clear()
@@ -66,23 +72,27 @@ public class BitTest {
 		else {
 			System.out.println("clear() - Success");
 		}
+
+		System.out.println();
 	}
 
 	// Test case for getValue()
 	public static void test_getValue() throws Exception {
 		if(new Bit(false).getValue() != false) {
-			throw new Exception("getValue() 1 - Failed");
+			throw new Exception("getValue() - Failed");
 		}
 		else {
-			System.out.println("getValue() 1 - Success");
+			System.out.println("getValue() - Success");
 		}
 
 		if(new Bit(true).getValue() != true) {
-			throw new Exception("getValue() 2 - Failed");
+			throw new Exception("getValue() - Failed");
 		}
 		else {
-			System.out.println("getValue() 2 - Success");
+			System.out.println("getValue() - Success");
 		}
+
+		System.out.println();
 	}
 
 	// Test case for and(Bit)
@@ -90,18 +100,20 @@ public class BitTest {
 		Bit test = new Bit(true);
 
 		if(test.and(new Bit(true)).getValue() != true) {
-			throw new Exception("and(Bit) 1 - Failed");
+			throw new Exception("and(Bit) - Failed");
 		}
 		else {
-			System.out.println("and(Bit) 1 - Success");
+			System.out.println("and(Bit) - Success");
 		}
 
 		if(test.and(new Bit(false)).getValue() != false) {
-			throw new Exception("and(Bit) 2 - Failed");
+			throw new Exception("and(Bit) - Failed");
 		}
 		else {
-			System.out.println("and(Bit) 2 - Success");
+			System.out.println("and(Bit) - Success");
 		}
+
+		System.out.println();
 	}
 
 	// Test case for or(Bit)
@@ -109,18 +121,20 @@ public class BitTest {
 		Bit test = new Bit(true);
 
 		if(test.or(new Bit(true)).getValue() != true) {
-			throw new Exception("or(Bit) 1 - Failed");
+			throw new Exception("or(Bit) - Failed");
 		}
 		else {
-			System.out.println("or(Bit) 1 - Success");
+			System.out.println("or(Bit) - Success");
 		}
 
 		if(test.or(new Bit(false)).getValue() != true) {
-			throw new Exception("or(Bit) 2 - Failed");
+			throw new Exception("or(Bit) - Failed");
 		}
 		else {
-			System.out.println("or(Bit) 2 - Success");
+			System.out.println("or(Bit) - Success");
 		}
+
+		System.out.println();
 	}
 
 	// Test case for xor(Bit)
@@ -128,52 +142,58 @@ public class BitTest {
 		Bit test = new Bit(true);
 
 		if(test.xor(new Bit(true)).getValue() != false) {
-			throw new Exception("xor(Bit) 1 - Failed");
+			throw new Exception("xor(Bit) - Failed");
 		}
 		else {
-			System.out.println("xor(Bit) 1 - Success");
+			System.out.println("xor(Bit) - Success");
 		}
 
 		if(test.xor(new Bit(false)).getValue() != true) {
-			throw new Exception("xor(Bit) 2 - Failed");
+			throw new Exception("xor(Bit) - Failed");
 		}
 		else {
-			System.out.println("xor(Bit) 2 - Success");
+			System.out.println("xor(Bit) - Success");
 		}
+
+		System.out.println();
 	}
 
 	// Test case for not()
 	public static void test_not() throws Exception {
 		if(new Bit(false).not().getValue() != true) {
-			throw new Exception("not() 1 - Failed");
+			throw new Exception("not() - Failed");
 		}
 		else {
-			System.out.println("not() 1 - Success");
+			System.out.println("not() - Success");
 		}
 
 		if(new Bit(true).not().getValue() != false) {
-			throw new Exception("not() 2 - Failed");
+			throw new Exception("not() - Failed");
 		}
 		else {
-			System.out.println("not() 2 - Success");
+			System.out.println("not() - Success");
 		}
+
+		System.out.println();
 	}
 
 	// Test case for toString()
 	public static void test_toString() throws Exception {
 		if(new Bit(true).toString().equals("t")) {
-			System.out.println("toString() 1 - Success");
+			System.out.println("toString() - Success");
 		}
 		else {
-			throw new Exception("toString() 1 - Failed");
+			throw new Exception("toString() - Failed");
 		}
 
 		if(new Bit(false).toString().equals("f")) {
-			System.out.println("toString() 2 - Success");
+			System.out.println("toString() - Success");
 		}
 		else {
-			throw new Exception("toString() 2 - Failed");
+			throw new Exception("toString() - Failed");
 		}
+
+		System.out.println();
 	}
 
 	public static void runTests() throws Exception {
@@ -187,7 +207,5 @@ public class BitTest {
 		test_xor();
 		test_not();
 		test_toString();
-
-		System.out.println();
 	}
 }	

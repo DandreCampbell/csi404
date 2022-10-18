@@ -10,13 +10,16 @@ public class ALUTest {
         test[2] = new Bit(false);
         test[3] = new Bit(true);
  
-        Longword result = ALU.doOp(test, new Longword(2), new Longword(2)); // 2
         if(test.equals(ALU.bit_conversion(8))) {
             throw new Exception("doOp() : and - Failed");
         }
         else {
-            System.out.printf("doOp() : and - Success: %d\n", result.getSigned());
+            System.out.printf("doOp() : and - Success\n");
+            System.out.printf("Expected: 2 | Result: %d\n", ALU.doOp(test, new Longword(2), new Longword(2)).getSigned());
+            System.out.printf("Expected: 4 | Result: %d\n", ALU.doOp(test, new Longword(13), new Longword(4)).getSigned());
         }
+
+        System.out.println();
     }
 
     /*
@@ -29,13 +32,17 @@ public class ALUTest {
         test[2] = new Bit(false);
         test[3] = new Bit(true);
 
-        Longword result = ALU.doOp(test, new Longword(2), new Longword(2)); // 2
+        //Longword result = ALU.doOp(test, new Longword(2), new Longword(2)); // 2
         if(test.equals(ALU.bit_conversion(9))) {
             throw new Exception("doOp() : or - Failed");
         }
         else {
-            System.out.printf("doOp() : or - Success: %d\n", result.getSigned());
+            System.out.printf("doOp() : or - Success\n");
+            System.out.printf("Expected: 10 | Result: %d\n", ALU.doOp(test, new Longword(8), new Longword(2)).getSigned());
+            System.out.printf("Expected: 7 | Result: %d\n", ALU.doOp(test, new Longword(7), new Longword(4)).getSigned());
         }
+
+        System.out.println();
     }
 
     /*
@@ -48,13 +55,16 @@ public class ALUTest {
         test[2] = new Bit(false);
         test[3] = new Bit(true);
 
-        Longword result = ALU.doOp(test, new Longword(2), new Longword(2)); // 0
         if(test.equals(ALU.bit_conversion(10))) {
             throw new Exception("doOp() : xor - Failed");
         }
         else {
-            System.out.printf("doOp() : xor - Success: %d\n", result.getSigned());
+            System.out.printf("doOp() : xor - Success\n");
+            System.out.printf("Expected: 0 | Result: %d\n", ALU.doOp(test, new Longword(4), new Longword(4)).getSigned());
+            System.out.printf("Expected: 10 | Result: %d\n", ALU.doOp(test, new Longword(9), new Longword(3)).getSigned());
         }
+
+        System.out.println();
     }
 
     /*
@@ -67,13 +77,15 @@ public class ALUTest {
         test[2] = new Bit(false);
         test[3] = new Bit(true);
 
-        Longword result = ALU.doOp(test, new Longword(2), new Longword()); // 0
         if(test.equals(ALU.bit_conversion(11))) {
             throw new Exception("doOp() : not - Failed");
         }
         else {
-            System.out.printf("doOp() : not - Success: %d\n", result.getSigned());
+            System.out.printf("doOp() : not - Success\n");
+            System.out.printf("Expected: 4294966629 | Result: %d\n", ALU.doOp(test, new Longword(666), new Longword()).getSigned());
         }
+
+        System.out.println();
     }
 
     /*
@@ -86,13 +98,16 @@ public class ALUTest {
         test[2] = new Bit(true);
         test[3] = new Bit(true);
 
-        Longword result = ALU.doOp(test, new Longword(2), new Longword(2)); // 8
         if(test.equals(ALU.bit_conversion(12))) {
             throw new Exception("doOp() : leftShift - Failed");
         }
         else {
-            System.out.printf("doOp() : leftShift - Success: %d\n", result.getSigned());
+            System.out.printf("doOp() : leftShift - Success\n");
+            System.out.printf("Expected: 8 | Result: %d\n", ALU.doOp(test, new Longword(2), new Longword(2)).getSigned());
+            System.out.printf("Expected: 112 | Result: %d\n", ALU.doOp(test, new Longword(7), new Longword(4)).getSigned());
         }
+
+        System.out.println();
     }
 
     /*
@@ -105,13 +120,16 @@ public class ALUTest {
         test[2] = new Bit(true);
         test[3] = new Bit(true);
 
-        Longword result = ALU.doOp(test, new Longword(20), new Longword(2)); // 5
         if(test.equals(ALU.bit_conversion(13))) {
             throw new Exception("doOp() : rightShift - Failed");
         }
         else {
-            System.out.printf("doOp() : rightShift - Success: %d\n", result.getSigned());
+            System.out.printf("doOp() : rightShift - Success\n");
+            System.out.printf("Expected: 5 | Result: %d\n", ALU.doOp(test, new Longword(20), new Longword(2)).getSigned());
+            System.out.printf("Expected: 20 | Result: %d\n", ALU.doOp(test, new Longword(40), new Longword(1)).getSigned());
         }
+
+        System.out.println();
     }
 
     /*
@@ -124,13 +142,16 @@ public class ALUTest {
         test[2] = new Bit(true);
         test[3] = new Bit(true);
 
-        Longword result = ALU.doOp(test, new Longword(2), new Longword(2)); // 4
         if(test.equals(ALU.bit_conversion(14))) {
             throw new Exception("doOp() : add - Failed");
         }
         else {
-            System.out.printf("doOp() : add - Success: %d\n", result.getSigned());
+            System.out.printf("doOp() : add - Success\n");
+            System.out.printf("Expected: 8 | Result: %d\n", ALU.doOp(test, new Longword(6), new Longword(2)).getSigned());
+            System.out.printf("Expected: 11 | Result: %d\n", ALU.doOp(test, new Longword(7), new Longword(4)).getSigned());
         }
+
+        System.out.println();
     }
 
     /*
@@ -143,13 +164,16 @@ public class ALUTest {
         test[2] = new Bit(true);
         test[3] = new Bit(true);
 
-        Longword result = ALU.doOp(test, new Longword(2), new Longword(2)); // 0
         if(test.equals(ALU.bit_conversion(15))) {
             throw new Exception("doOp() : subtract - Failed");
         }
         else {
-            System.out.printf("doOp() : subtract - Success: %d\n", result.getSigned());
+            System.out.printf("doOp() : subtract - Success\n");
+            System.out.printf("Expected: 10 | Result: %d\n", ALU.doOp(test, new Longword(50), new Longword(40)).getSigned());
+            System.out.printf("Expected: 7 | Result: %d\n", ALU.doOp(test, new Longword(45), new Longword(38)).getSigned());
         }
+
+        System.out.println();
     }
 
     /*
@@ -163,26 +187,29 @@ public class ALUTest {
         test[3] = new Bit(false);
         test[4] = new Bit(true);
 
-        Longword result = ALU.doOp(test, new Longword(2), new Longword(2)); // 4
         if(test.equals(ALU.bit_conversion(16))) {
             throw new Exception("doOp() : multiply - Failed");
         }
         else {
-            System.out.printf("doOp() : multiply - Success: %d\n", result.getSigned());
+            System.out.printf("doOp() : multiply - Success\n");
+            System.out.printf("Expected: 4 | Result: %d\n", ALU.doOp(test, new Longword(2), new Longword(2)).getSigned());
+            System.out.printf("Expected: 20 | Result: %d\n", ALU.doOp(test, new Longword(5), new Longword(4)).getSigned());
         }
+
+        System.out.println();
     }
 
     public static void runTest() throws Exception {
-        test_and();
-        test_or();
-        test_xor();
-        test_not();
-        test_leftShift();
-        test_rightShift();
-
-        test_add();
-        test_subtract();
-        test_multiply();
+        test_and(); 
+        //test_or();
+        //test_xor();
+        //test_not();
+        //test_leftShift();
+        //test_rightShift();
+        
+        //test_add();
+        //test_subtract();
+        //test_multiply();
 
         System.out.println();
     }

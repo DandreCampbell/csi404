@@ -5,9 +5,11 @@ public class MemoryTest {
     */
     public static void runTests() throws Exception {
         Memory computer_memory = new Memory();
+
+        String output = "f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,";
         try {
             computer_memory.write(new Longword(), new Longword());
-            if(computer_memory.read(new Longword(0)).toString().equals("f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,")) {
+            if(computer_memory.read(new Longword(0)).toString().equals(output)) {
                 System.out.println("write() - Success");
                 System.out.println("read() - Success");
             }

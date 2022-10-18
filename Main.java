@@ -1,4 +1,5 @@
 public class Main {
+
     public static void main(String[] args) throws Exception {
         /* 
         System.out.println("Bit Test: ");
@@ -15,12 +16,15 @@ public class Main {
         */
         System.out.println("ALU Test: ");
         ALUTest.runTest();
-        /* 
+        /*
         System.out.println("Memory Test: ");
         MemoryTest.runTests();
         
-        System.out.println("Computer Test: ");
-        ComputerTest.runTest();
+        System.out.println("CPU-1 Test: ");
+        CPUTest1.runTest();
+
+        System.out.println("Assembler Test ");
+        AssemblerTest.runTest();
         */
     }
 }

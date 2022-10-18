@@ -19,6 +19,8 @@ public class LongwordTest {
         else {
             System.out.println("getBit(index) 2 - Success");
         }
+
+        System.out.println();
     }
 
     // Test case for setBit(int, Bit)
@@ -32,17 +34,15 @@ public class LongwordTest {
         else {
             System.out.println("setBit(index, value) - Success");
         }
+
+        System.out.println();
     }
 
     // Test case for and(Longword)
     public static void test_and() throws Exception {
         Longword test = new Longword(10);
         Longword result = test.and(new Longword(2));
-/* 
-        System.out.println(test.toString());
-        System.out.println(new Longword(2).toString());
-        System.out.println(result.toString());
-*/
+
         if(result.getSigned() != 2) {
             throw new Exception("and(other) - Failed");
         }
@@ -51,6 +51,8 @@ public class LongwordTest {
             System.out.println("Expected: f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,f,"); // 
             System.out.printf("Result: %s \n", result.toString()); 
         }
+
+        System.out.println();
     }
 
     // Test case for or(Longword)
@@ -66,6 +68,8 @@ public class LongwordTest {
             System.out.println("Expected: f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,t,f,t,t,"); 
             System.out.printf("Result: %s \n", result.toString()); 
         }
+
+        System.out.println();
     }
     
     // Test case for xor(Longword)
@@ -81,6 +85,8 @@ public class LongwordTest {
             System.out.println("Expected: f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,f,f,f,");
             System.out.printf("Result: %s \n", result.toString());
         }
+
+        System.out.println();
     }
 
     // Test case for not()
@@ -96,6 +102,8 @@ public class LongwordTest {
         else {
             throw new Exception("not() - Failed");
         }
+
+        System.out.println();
     }
 
     // Test case for rightShift(int)
@@ -111,6 +119,8 @@ public class LongwordTest {
             System.out.println("Expected: f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,");
             System.out.printf("Result: %s \n", result.toString());
         }
+
+        System.out.println();
     }
 
     // Test case for leftShift(int)
@@ -126,6 +136,8 @@ public class LongwordTest {
             System.out.println("Expected: f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,f,f,");
             System.out.printf("Result: %s \n", result.toString());
         }
+
+        System.out.println();
     }
 
     // Test case for toString()
@@ -139,30 +151,58 @@ public class LongwordTest {
 		else {
 			throw new Exception("toString() - Failed");
 		}
+
+        System.out.println();
     }
 
     // Test case for getUnsigned()
     public static void test_getUnsigned() throws Exception {
-        Longword test = new Longword(10);
+        Longword test = new Longword();
 
+        test = new Longword(10);
         if(test.getUnsigned() != 10L) {
             throw new Exception("getUnsigned() - Failed");
         }
         else {
             System.out.println("getUnsigned() - Success");
+            System.out.printf("Expected: 10L | Result: %d\n", test.getUnsigned());
         }
+
+        test = new Longword(56);
+        if(test.getUnsigned() != 56L) {
+            throw new Exception("getUnsigned() - Failed");
+        }
+        else {
+            System.out.println("getUnsigned() - Success");
+            System.out.printf("Expected: 56L | Result: %d\n", test.getUnsigned());
+        }
+
+        System.out.println();
     }
 
     // Test case for getSigned()
     public static void test_getSigned() throws Exception {
-        Longword test = new Longword(15);
+        Longword test = new Longword();
 
+        test = new Longword(15);
         if(test.getSigned() != 15) {
             throw new Exception("getSigned() - Failed");
         }
         else {
             System.out.println("getSigned() - Success");
+            System.out.printf("Expected: 15 | Result: %d\n", test.getSigned());
         }
+
+        test = new Longword(39);
+        if(test.getSigned() != 39) {
+            throw new Exception("getSigned() - Failed");
+        }
+        else {
+            System.out.println("getSigned() - Success");
+            System.out.printf("Expected: 39 | Result: %d\n", test.getSigned());
+        }
+
+        System.out.println();
     }
 
     // Test case for copy(Longword)
@@ -178,6 +218,8 @@ public class LongwordTest {
             System.out.println("Expected: f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,f,t,");
             System.out.printf("Result: %s \n", test.toString());
         }
+
+        System.out.println();
     }
 
     // Test case for set(int)
@@ -199,6 +241,8 @@ public class LongwordTest {
         else {
             System.out.println("set(value) - Success");
         }
+
+        System.out.println();
     }
 
     public static void runTests() throws Exception {
@@ -215,7 +259,5 @@ public class LongwordTest {
         test_getSigned();
         test_copy();
         test_set();
-        
-        System.out.println();
     }
 }

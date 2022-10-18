@@ -10,8 +10,7 @@ public class MultiplierTest {
         }
         else {
             System.out.println("multiply() - Success");
-            System.out.println("Expected: 35");
-            System.out.printf("Result: %d\n", result.getSigned());
+            System.out.printf("Expected: 35 | Result: %d\n", result.getSigned());
         }
 
         result = Multiplier.multiply(new Longword(2), new Longword(2));
@@ -20,8 +19,16 @@ public class MultiplierTest {
         }
         else {
             System.out.println("multiply() - Success");
-            System.out.println("Expected: 4");
-            System.out.printf("Result: %d\n", result.getSigned());
+            System.out.printf("Expected: 4 | Result: %d\n", result.getSigned());
+        }
+
+        result = Multiplier.multiply(new Longword(1000), new Longword(3));
+        if(result.getSigned() != 3000) {
+            System.out.println("multiply() : 1000 * 3 : Failed");
+        }
+        else {
+            System.out.println("multiply() - Success");
+            System.out.printf("Expected: 3000 | Result: %d\n", result.getSigned());
         }
 
         System.out.println();

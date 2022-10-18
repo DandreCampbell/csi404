@@ -152,7 +152,7 @@ public class Longword {
     */
     public void copy(Longword other) {
         for(int i = 0; i < 32; i++) {
-            setBit(i, other.getBit(i));
+            this.setBit(i, other.getBit(i));
         }
     } 
 

@@ -10,7 +10,7 @@ public class Memory {
     }
 
     /*
-        Reads the bits stores in "memory"
+        Reads the bits stores from "memory"
     */
     public Longword read(Longword address) {
         Longword read = new Longword();
@@ -22,7 +22,7 @@ public class Memory {
     }
     
     /*
-        writes news bites into "memory"
+        Stores/Writes news bits into "memory"
     */
     public void write(Longword address, Longword value) {
         for(int i = 0; i < 8; i++) {
