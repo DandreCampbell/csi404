@@ -87,6 +87,7 @@ public class Computer {
     /*
         Allows computer to set the value of any register
     */
+
     public void move(Longword address, Longword value) {
         this.registers[address.getSigned()] = value;
     }
@@ -112,25 +113,46 @@ public class Computer {
     }
 
     /*
-        M 
+        Converts String array into longword bit array
     */
     public void preload(String[] bits) {
-        Longword output = new Longword();
+        Longword temp = new Longword();
         String[] longword = {""};
-        int i;
+        int i, j;
 
         // Breaks the bits string array into 4 seperate strings
         for(i = 0; i < bits.length; i++) {
             longword[i] += bits[i].split(" ");
-        }
-        /* 
-        for(i = 0; i < 4; i++) {
-            if(longword[0] == "1") {
-                output.setBit(i, new Bit(true));
+
+            // Set bits for bit array at longword[0]
+            for(j = 0; j < 4; j++) {
+                if(longword[0].charAt(j) == '1') {
+                    temp.setBit(j, new Bit(true));
+                }
+            }
+
+            // Set bits for bit array at longword[1]
+            for(j = 4; j < 8; j++) {
+                if(longword[1].charAt(j) == '1') {
+                    temp.setBit(j, new Bit(true));
+                }
+            }
+
+            // Set bits for bit array at longword[2]
+            for(j = 8; j < 12; j++) {
+                if(longword[2].charAt(j) == '1') {
+                    temp.setBit(j, new Bit(true));
+                }
+            }
+
+            // Set bits for bit array at longword[3]
+            for(j = 12; j < 16; j++) {
+                if(longword[3].charAt(j) == '1') {
+                    temp.setBit(j, new Bit(true));
+                }
             }
         }
-        */
-        // need to find out how to determine "write" address
-        this.computer_memory.write(op1, output);
+        
+        // this.computer_memory.write(register, value);
     }
 }

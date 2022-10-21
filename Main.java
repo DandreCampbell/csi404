@@ -13,10 +13,11 @@ public class Main {
         
         System.out.println("Multiplier Test: ");
         MultiplierTest.runTest();
-        */
+        
         System.out.println("ALU Test: ");
         ALUTest.runTest();
-        /*
+        */
+        /* 
         System.out.println("Memory Test: ");
         MemoryTest.runTests();
         

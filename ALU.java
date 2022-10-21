@@ -46,12 +46,23 @@ public class ALU {
         if(operation.equals(bit_conversion(value))) {
             return true;
         }
-        
+
         return false;
     }
 
-    public static Longword doOp(Bit[] operation, Longword a, Longword b) {
+    public static int bit_shift(Longword b) {
         int shift = 0;
+        for(int i = 5; i >= 0; i--) {
+            if(b.getBit(i).getValue() == true) {
+                shift += (int) Math.pow(2, i);
+            }
+        }
+
+        return shift;
+    }
+
+    public static Longword doOp(Bit[] operation, Longword a, Longword b) {
+        Longword result = new Longword(1);
 
         /* 
             Choice based on decimal value of Bit[] operation
@@ -59,48 +70,36 @@ public class ALU {
             13: rightShift(), 14: add(), 15: subtract(), 16: multiply()
         */
         if(bit_compare(operation, 8) == false) {
-            return a.and(b);
+            result = a.and(b);
         }
-        else if(bit_compare(operation, 9)  == false) {
-            return a.or(b);
+        else if(bit_compare(operation, 9)  == true) {
+            result = a.or(b);
         }
         else if(bit_compare(operation, 10) == true) {
-            return a.xor(b);
+            result = a.xor(b);
         }
         else if(bit_compare(operation, 11) == true) {
-            return a.not();
+            result = a.not();
         }
         //  “a” is the value to shift, “b” is the amount to shift it; ignore all but the lowest 5 bits
         else if(bit_compare(operation, 12) == true) {
-            shift = 0;
-            for(int i = 5; i >= 0; i--) {
-                if(b.getBit(i).getValue() == true) {
-                    shift += (int) Math.pow(2, i);
-                }
-            }
-            return a.leftShift(shift);
+            result = a.leftShift(bit_shift(b));
         }
         //“a” is the value to shift, “b” is the amount to shift it; ignore all but the lowest 5 bits
         else if(bit_compare(operation, 13) == true) {
-            shift = 0;
-            for(int i = 5; i >= 0; i--) {
-                if(b.getBit(i).getValue() == true) {
-                    shift += (int) Math.pow(2, i);
-                }
-            }
-            return a.rightShift(shift);
+            result = a.rightShift(bit_shift(b));
         }
         else if(bit_compare(operation, 14) == true) {
-            return RippleAdder.add(a, b);
+            result = RippleAdder.add(a, b);
         }
         else if(bit_compare(operation, 15) == true) {
-            return RippleAdder.subtract(a, b);
+            result = RippleAdder.subtract(a, b);
         }
         else if(bit_compare(operation, 16) == true) {
-            return Multiplier.multiply(a, b);
+            result = Multiplier.multiply(a, b);
         }
         
-        return new Longword(1);
+        return result;
     }
     
     /*
