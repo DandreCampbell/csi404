@@ -5,7 +5,7 @@ public class Memory {
 
     public Memory() {
         for(int i = 0; i < 8192; i++) {
-            this.storage[i] = new Bit(true);
+            this.storage[i] = new Bit(false);
         }
     }
 
@@ -39,10 +39,10 @@ public class Memory {
 
         for(int i = 0; i < 1024; i++) {
             if(this.storage[i].getValue() == true) {
-                output += "t";
+                output += "t,";
             }
             else if(this.storage[i].getValue() == false) {
-                output += "f";
+                output += "f,";
             }
         }
         return output;

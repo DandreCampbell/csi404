@@ -10,6 +10,9 @@ public class ALUTest {
         test[2] = new Bit(false);
         test[3] = new Bit(true);
  
+        System.out.println(ALU.toString(test));
+        System.out.println(ALU.toString(ALU.bit_conversion(8)));
+
         if(test.equals(ALU.bit_conversion(8))) {
             throw new Exception("doOp() : and - Failed");
         }
@@ -31,6 +34,9 @@ public class ALUTest {
         test[1] = new Bit(false);
         test[2] = new Bit(false);
         test[3] = new Bit(true);
+
+        System.out.println(ALU.toString(test));
+        System.out.println(ALU.toString(ALU.bit_conversion(9)));
 
         //Longword result = ALU.doOp(test, new Longword(2), new Longword(2)); // 2
         if(test.equals(ALU.bit_conversion(9))) {
@@ -55,6 +61,9 @@ public class ALUTest {
         test[2] = new Bit(false);
         test[3] = new Bit(true);
 
+        System.out.println(ALU.toString(test));
+        System.out.println(ALU.toString(ALU.bit_conversion(10)));
+
         if(test.equals(ALU.bit_conversion(10))) {
             throw new Exception("doOp() : xor - Failed");
         }
@@ -77,6 +86,9 @@ public class ALUTest {
         test[2] = new Bit(false);
         test[3] = new Bit(true);
 
+        System.out.println(ALU.toString(test));
+        System.out.println(ALU.toString(ALU.bit_conversion(11)));
+
         if(test.equals(ALU.bit_conversion(11))) {
             throw new Exception("doOp() : not - Failed");
         }
@@ -97,6 +109,9 @@ public class ALUTest {
         test[1] = new Bit(false);
         test[2] = new Bit(true);
         test[3] = new Bit(true);
+
+        System.out.println(ALU.toString(test));
+        System.out.println(ALU.toString(ALU.bit_conversion(12)));
 
         if(test.equals(ALU.bit_conversion(12))) {
             throw new Exception("doOp() : leftShift - Failed");
@@ -120,6 +135,9 @@ public class ALUTest {
         test[2] = new Bit(true);
         test[3] = new Bit(true);
 
+        System.out.println(ALU.toString(test));
+        System.out.println(ALU.toString(ALU.bit_conversion(13)));
+
         if(test.equals(ALU.bit_conversion(13))) {
             throw new Exception("doOp() : rightShift - Failed");
         }
@@ -141,6 +159,9 @@ public class ALUTest {
         test[1] = new Bit(true);
         test[2] = new Bit(true);
         test[3] = new Bit(true);
+
+        System.out.println(ALU.toString(test));
+        System.out.println(ALU.toString(ALU.bit_conversion(14)));
 
         if(test.equals(ALU.bit_conversion(14))) {
             throw new Exception("doOp() : add - Failed");
@@ -164,6 +185,9 @@ public class ALUTest {
         test[2] = new Bit(true);
         test[3] = new Bit(true);
 
+        System.out.println(ALU.toString(test));
+        System.out.println(ALU.toString(ALU.bit_conversion(15)));
+
         if(test.equals(ALU.bit_conversion(15))) {
             throw new Exception("doOp() : subtract - Failed");
         }
@@ -177,23 +201,24 @@ public class ALUTest {
     }
 
     /*
-        Binary Value = 10000 | Decimal Value = 16 ?      
+        Binary Value = 0111 | Decimal Value = 7      
     */
     public static void test_multiply() throws Exception {
-        Bit[] test = new Bit[5];
+        Bit[] test = new Bit[4];
         test[0] = new Bit(false);
-        test[1] = new Bit(false);
-        test[2] = new Bit(false);
-        test[3] = new Bit(false);
-        test[4] = new Bit(true);
+        test[1] = new Bit(true);
+        test[2] = new Bit(true);
+        test[3] = new Bit(true);
 
-        if(test.equals(ALU.bit_conversion(16))) {
+        System.out.println(ALU.toString(test));
+        System.out.println(ALU.toString(ALU.bit_conversion(7)));
+
+        if(test.equals(ALU.bit_conversion(7))) {
             throw new Exception("doOp() : multiply - Failed");
         }
         else {
             System.out.printf("doOp() : multiply - Success\n");
             System.out.printf("Expected: 4 | Result: %d\n", ALU.doOp(test, new Longword(2), new Longword(2)).getSigned());
-            System.out.printf("Expected: 20 | Result: %d\n", ALU.doOp(test, new Longword(5), new Longword(4)).getSigned());
         }
 
         System.out.println();
@@ -201,15 +226,15 @@ public class ALUTest {
 
     public static void runTest() throws Exception {
         test_and(); 
-        //test_or();
-        //test_xor();
-        //test_not();
-        //test_leftShift();
-        //test_rightShift();
+        test_or();
+        test_xor();
+        test_not();
+        test_leftShift();
+        test_rightShift();
         
-        //test_add();
-        //test_subtract();
-        //test_multiply();
+        test_add();
+        test_subtract();
+        test_multiply();
 
         System.out.println();
     }
