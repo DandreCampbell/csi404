@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Computer {
 
     private Bit power_switch = new Bit();
@@ -25,12 +27,12 @@ public class Computer {
     }
 
     /*
-        Simulates that the computer is on and will run until 
+        Simulates that the computer is on and will run until a
         bit value(power_switch) is false; 
     */
     public void run() {
         this.power_switch.set();
-        while(this.power_switch.getValue() == true) {
+        while(this.power_switch.getValue()) {
             fetch();
             decode();
             execute();
@@ -39,8 +41,8 @@ public class Computer {
     }
 
     /*
-        Retrieves an the next longword or instruction from our
-        simluated computer memory
+        Retrieves the next Longword or instruction from our
+        simulated computer memory
     */
     public void fetch() {
         this.current_instruction = this.computer_memory.read(this.pc);
@@ -48,7 +50,7 @@ public class Computer {
     }
 
     /*
-        Retrives values from registers that will later be used in the ALU
+        Retrieves values from registers that will later be used in the ALU
     */
     public void decode() {
         this.opcode = opcode_mask(this.current_instruction);
@@ -69,19 +71,19 @@ public class Computer {
             operation[i] = this.opcode.getBit(i);
         }
 
-        if(operation.equals(halt_command)) {
+        if(Arrays.equals(operation, halt_command)) {
             System.out.println("Turning off...");
             halt();
         }
-        else if(operation.equals(interrupt_command)) {
-            if(this.opcode.getBit(15).getValue() == true) {
+        else if(Arrays.equals(operation, interrupt_command)) {
+            if(this.opcode.getBit(15).getValue()) {
                 interrupt_1();
             }
-            else if(this.opcode.getBit(15).getValue() == false) {
+            else if(!this.opcode.getBit(15).getValue()) {
                 interrupt_0();
             }
         }
-        else if(operation.equals(move_command)) {
+        else if(Arrays.equals(operation, move_command)) {
             move(this.op1, new Longword());
         }
 
@@ -150,12 +152,12 @@ public class Computer {
     public void interrupt_0() {
         System.out.println("Current Registers:");
         for(int i = 0; i < this.registers.length; i++) {
-            System.out.println(this.registers[i].toString());
+            System.out.printf("%s - %d \n", this.registers[i].toString(), i);
         }
     }
 
     /*
-        Temporarily interrupts the progam to print all 1024 
+        Temporarily interrupts the program to print all 1024
         bytes of memory to the screen
     */
     public void interrupt_1() {
