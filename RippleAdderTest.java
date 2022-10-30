@@ -31,7 +31,7 @@ public class RippleAdderTest {
 
         result = RippleAdder.subtract(new Longword(7), new Longword(5));
         if(result.getSigned() != 2) {
-            System.out.println("subtract() - Failed");
+            throw new Exception("subtract() - Failed");
         }
         else {
             System.out.println("subtract() - Success");
@@ -40,7 +40,7 @@ public class RippleAdderTest {
 
         result = RippleAdder.subtract(new Longword(40), new Longword(4));
         if(result.getSigned() != 36) {
-            System.out.println("subtract() - Failed");
+            throw new Exception("subtract() - Failed");
         }
         else {
             System.out.println("subtract() - Success");
@@ -51,6 +51,8 @@ public class RippleAdderTest {
     }
 
     public static void runTest() throws Exception {
+        System.out.println("RippleAdder Test: ");
+
         test_add();
         test_subtract();
     }

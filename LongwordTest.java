@@ -246,6 +246,8 @@ public class LongwordTest {
     }
 
     public static void runTests() throws Exception {
+        System.out.println("Longword Test: ");
+
         test_getBit();
         test_setBit();
         test_and();

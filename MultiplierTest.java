@@ -2,11 +2,12 @@ public class MultiplierTest {
     
     // Test case for multiply(Longword, Longword)
     public static void runTest() throws Exception {
+        System.out.println("Multiplier Test: ");
         Longword result = new Longword();
 
         result = Multiplier.multiply(new Longword(7), new Longword(5));
         if(result.getSigned() != 35) {
-            System.out.println("multiply() : 7 * 5 : Failed");
+            throw new Exception("multiply() : 7 * 5 : Failed");
         }
         else {
             System.out.println("multiply() - Success");
@@ -15,7 +16,7 @@ public class MultiplierTest {
 
         result = Multiplier.multiply(new Longword(2), new Longword(2));
         if(result.getSigned() != 4) {
-            System.out.println("multiply() : 2 * 2 : Failed");
+            throw new Exception("multiply() : 2 * 2 : Failed");
         }
         else {
             System.out.println("multiply() - Success");
@@ -24,7 +25,7 @@ public class MultiplierTest {
 
         result = Multiplier.multiply(new Longword(1000), new Longword(3));
         if(result.getSigned() != 3000) {
-            System.out.println("multiply() : 1000 * 3 : Failed");
+            throw new Exception("multiply() : 1000 * 3 : Failed");
         }
         else {
             System.out.println("multiply() - Success");

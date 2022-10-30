@@ -18,8 +18,7 @@ public class RippleAdder {
         Iterates through both longwords and subtracts their values in a new result
     */
     public static Longword subtract(Longword a, Longword b) {
-        Longword result = add(a, add(b.not(), new Longword(1)));
-        return result;
+        return add(a, add(b.not(), new Longword(1)));
     }
     
 }

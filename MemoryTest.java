@@ -6,7 +6,8 @@ public class MemoryTest {
         Add a Longword to a set address. We then pull that Longword from that address 
         and compare it to our expected Longword's binary string.
     */
-    public static void runTests() throws Exception {
+    public static void runTests() {
+        System.out.println("Memory Test: ");
         Memory computer_memory = new Memory();
 
         String output = "";
@@ -34,7 +35,7 @@ public class MemoryTest {
         }
         catch(Exception e) {
             System.out.println("MemoryTest - Failed");
-            System.out.println(e);
+            e.printStackTrace();
         }
 
         System.out.println();

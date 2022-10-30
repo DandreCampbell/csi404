@@ -17,7 +17,7 @@ public class Longword {
         return this.longword[index];
     } 
 
-    // Set bit at given index with given value
+    // Set Bit at given index with given value
     public void setBit(int index, Bit value) {
         this.longword[index] = value;   
     }   
@@ -28,8 +28,7 @@ public class Longword {
     */
     public Longword and(Longword other_word) {
         Longword and = new Longword();
-
-        for(int i = 0; i < 32; i++) {
+        for(int i = 0; i < this.longword.length; i++) {
             and.setBit(i, this.longword[i].and(other_word.getBit(i)));
         }
         return and;
@@ -41,8 +40,7 @@ public class Longword {
     */
     public Longword or(Longword other_word) {
         Longword or = new Longword();
-
-        for(int i = 0; i < 32; i++) {
+        for(int i = 0; i < this.longword.length; i++) {
             or.setBit(i, this.longword[i].or(other_word.getBit(i)));
         }
         return or;
@@ -51,25 +49,23 @@ public class Longword {
     /*
         XOR two longwords, returning a third   
         Iterate through Bit array and save result to new longword
+        Only false if both words have same value
     */
     public Longword xor(Longword other_word) {
         Longword xor = new Longword();
-
-        // Only false if both words have same value
-        for(int i = 0; i < 32; i++) {
+        for(int i = 0; i < this.longword.length; i++) {
             xor.setBit(i, this.longword[i].xor(other_word.getBit(i)));
         }
         return xor;
     } 
     
     /*
-        Negate this longword, creating another
+        Negate this Longword, creating another
         Iterate through Bit array and change value of each bit
     */
     public Longword not() {
         Longword not = new Longword();
-        
-        for(int i = 0; i < 32; i++) {
+        for(int i = 0; i < this.longword.length; i++) {
             not.setBit(i, this.longword[i].not());
         }
         return not;
@@ -80,8 +76,7 @@ public class Longword {
     */
     public Longword rightShift(int amount) {
         Longword rightShift = new Longword();
-
-        for(int i = 0; i + amount < 32; i++) {
+        for(int i = 0; i + amount < this.longword.length; i++) {
             rightShift.setBit(i, this.longword[i + amount]);
         }
         return rightShift;
@@ -92,20 +87,18 @@ public class Longword {
     */
     public Longword leftShift(int amount) {
         Longword leftShift = new Longword();
-
-        for(int i = 0; i + amount < 32; i++) {
+        for(int i = 0; i + amount < this.longword.length; i++) {
             leftShift.setBit(i + amount, this.longword[i]);
         }
         return leftShift;
     } 
 
     /*
-        Returns a comma separated string of 0's and 1's: "0,0,0,0,0 (etcetera)" for example
+        Returns a comma separated string of 0's and 1's: "0,0,0,0,0 (etc.)" for example
     */
     @Override
     public String toString() {
         String output = "";
-
         for(int i = 31; i >= 0; i--) {
             if(this.longword[i].getValue() == true) {
                 output += "t,";
@@ -118,7 +111,7 @@ public class Longword {
     } 
 
     /*
-        Iterates through longword and returns the value as an long
+        Iterates through longword and returns the value as a long
     */
     public long getUnsigned() {
         long unsigned = 0L;
@@ -151,7 +144,7 @@ public class Longword {
         Copies the values of the bits from another longword into this one
     */
     public void copy(Longword other) {
-        for(int i = 0; i < 32; i++) {
+        for(int i = 0; i < this.longword.length; i++) {
             this.setBit(i, other.getBit(i));
         }
     } 
@@ -160,7 +153,7 @@ public class Longword {
         Set the value of the bits of this longword (used for tests)
     */
     public void set(int value) {
-        int[] binary = new int[32];
+        int[] binary = new int[this.longword.length];
         int temp = value;
 
         // Convert value to binary

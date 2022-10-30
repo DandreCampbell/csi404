@@ -197,6 +197,8 @@ public class BitTest {
 	}
 
 	public static void runTests() throws Exception {
+		System.out.println("Bit Test: ");
+
 		test_setValue();
 		test_toggle();
 		test_set();
