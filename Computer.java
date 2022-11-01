@@ -95,7 +95,7 @@ public class Computer {
     */
     public void store() {
         System.out.println("Storing...");
-        this.registers[this.result_address.getSigned()] = this.result;
+        this.registers[this.current_instruction.getSigned()] = this.result;
     }
 
     /*
@@ -169,7 +169,7 @@ public class Computer {
         and writes them to memory. 
     */
     public void preload(String[] bits) {
-        String[] longword = new String[bits.length];
+        String[] instructions = new String[bits.length];
         Longword value = new Longword();
         int i, j, address = 0;
 
@@ -177,14 +177,14 @@ public class Computer {
 
         // Gets rid of spaces in each string of the bits array
         for(i = 0; i < bits.length; i++) {
-            longword[i] = bits[i].replaceAll(" ", "");
-            System.out.println(longword[i]);
+            instructions[i] = bits[i].replaceAll(" ", "");
+            System.out.println(instructions[i]);
         }
         
         // Turn each string into a Longword and writes it to memory
-        for(i = 0; i < longword.length; i++) {
+        for(i = 0; i < instructions.length; i++) {
             for(j = 0; j < 16; j++) {
-                if(longword[i].charAt(15 - j) == '1') {
+                if(instructions[i].charAt(15 - j) == '1') {
                     value.setBit(j, new Bit(true));
                 }
                 else {
