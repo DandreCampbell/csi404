@@ -14,12 +14,13 @@ public class CPUTest1 {
         }
         catch(Exception e) {
             System.out.println("Run Error.");
-            System.out.println(e);
+            e.printStackTrace();
         }
+
         System.out.println();
     }
 
-    public static void test_move() throws Exception {
+    public static void test_move() {
         try {
             Computer test_computer = new Computer();
             test_computer.move(new Longword(0), new Longword(333));
@@ -29,8 +30,9 @@ public class CPUTest1 {
         }
         catch(Exception e) {
             System.out.println("Move/Interrupt-0 Error.");
-            System.out.println(e);
+            e.printStackTrace();
         }
+
         System.out.println();
     }
 
@@ -41,8 +43,9 @@ public class CPUTest1 {
         }
         catch(Exception e) {
             System.out.println("Halt Error.");
-            System.out.println(e);
+            e.printStackTrace();
         }
+
         System.out.println();
     }
 
@@ -53,24 +56,25 @@ public class CPUTest1 {
         }
         catch(Exception e) {
             System.out.println("Interrupt-1 Error.");
-            System.out.println(e);
+            e.printStackTrace();
         }
         System.out.println();
     }
 
     public static void test_alu1() {
-        Bit[] test = new Bit[4]; // add
-        test[0] = new Bit(false);
-        test[1] = new Bit(true);
-        test[2] = new Bit(true);
-        test[3] = new Bit(true);
-        System.out.printf("Running ALU...\n" + 
-            "10 + 2: %d\n", ALU.doOp(test, new Longword(10), new Longword(2)).getSigned());
+        Bit[] test = new Bit[]{new Bit(), new Bit(true), new Bit(true), new Bit(true)}; //add
+
+        System.out.printf("""
+                Running ALU...
+                10 + 2: %d
+                """, ALU.doOp(test, new Longword(10), new Longword(2)).getSigned());
 
         System.out.println();
     }
 
-    public static void runTest() throws Exception{
+    public static void runTest() {
+        System.out.println("CPU Test 1:");
+
         test_preload();
         test_move();
         test_alu1();
