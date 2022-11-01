@@ -1,6 +1,6 @@
 public class CPUTest1 {
 
-    public static void test_preload() throws Exception {
+    public static void test_preload() {
         try {
             String halt = "0000 0000 0000 0000"; // stops computer from running
             String interrupt0 = "0010 0000 0000 0000"; // print registers
@@ -36,7 +36,7 @@ public class CPUTest1 {
         System.out.println();
     }
 
-    public static void test_halt() throws Exception {
+    public static void test_halt() {
         try {
             Computer test_computer = new Computer();
             test_computer.halt();
@@ -49,7 +49,7 @@ public class CPUTest1 {
         System.out.println();
     }
 
-    public static void test_interrupt1() throws Exception {
+    public static void test_interrupt1() {
         try {
             Computer test_computer = new Computer();
             test_computer.interrupt_1();
