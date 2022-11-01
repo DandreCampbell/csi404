@@ -1,30 +1,13 @@
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        /* 
-        System.out.println("Bit Test: ");
-        BitTest.runTests();
-        
-        System.out.println("Longword Test: ");
-        LongwordTest.runTests();
-        
-        System.out.println("RippleAdder Test: ");
-        RippleAdderTest.runTest();
-        
-        System.out.println("Multiplier Test: ");
-        MultiplierTest.runTest();
-        
-        System.out.println("ALU Test: ");
-        ALUTest.runTest();
-        
-        System.out.println("Memory Test: ");
-        MemoryTest.runTests();
-        */
-        System.out.println("CPU-1 Test: ");
-        CPUTest1.runTest();
-        /* 
-        System.out.println("Assembler Test ");
+        //BitTest.runTests();
+        //LongwordTest.runTests();
+        //RippleAdderTest.runTest();
+        //MultiplierTest.runTest();
+        //ALUTest.runTest();
+        //MemoryTest.runTests();
+        //CPUTest1.runTest();
         AssemblerTest.runTest();
-        */
     }
 }
