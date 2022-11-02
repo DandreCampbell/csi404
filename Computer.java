@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Computer {
 
     private Bit power_switch = new Bit();
@@ -12,10 +10,9 @@ public class Computer {
     private Longword op2 = new Longword();
     private Longword result = new Longword();
     private Longword result_address = new Longword();
-
-    Bit[] halt_command = {new Bit(false), new Bit(false), new Bit(false), new Bit(false)};
-    Bit[] move_command = {new Bit(false), new Bit(false), new Bit(false), new Bit(true)};
-    Bit[] interrupt_command = {new Bit(false), new Bit(false), new Bit(true), new Bit(false)};
+    private Bit[] halt_command = {new Bit(false), new Bit(false), new Bit(false), new Bit(false)}; //0000
+    private Bit[] move_command = {new Bit(false), new Bit(false), new Bit(false), new Bit(true)}; //0001
+    private Bit[] interrupt_command = {new Bit(false), new Bit(false), new Bit(true), new Bit(false)}; //0010
 
     /*
         Start computer with an empty register 
@@ -71,23 +68,24 @@ public class Computer {
             operation[i] = this.opcode.getBit(i);
         }
 
-        if(Arrays.equals(operation, halt_command)) {
+        if(opcode_compare(operation, halt_command) == true) {
             System.out.println("Turning off...");
             halt();
         }
-        else if(Arrays.equals(operation, interrupt_command)) {
-            if(this.opcode.getBit(15).getValue()) {
+        else if(opcode_compare(operation, interrupt_command) == true) {
+            if(this.opcode.getBit(15).getValue() == true) {
                 interrupt_1();
             }
-            else if(!this.opcode.getBit(15).getValue()) {
+            else if(!this.opcode.getBit(15).getValue() == false) {
                 interrupt_0();
             }
         }
-        else if(Arrays.equals(operation, move_command)) {
+        else if(opcode_compare(operation, move_command) == true) {
             move(this.op1, new Longword());
         }
-
-        this.result = ALU.doOp(operation, this.op1, this.op2);
+        else {
+            this.result = ALU.doOp(operation, this.op1, this.op2);
+        }
     }
 
     /*
@@ -194,5 +192,21 @@ public class Computer {
             this.computer_memory.write(new Longword(address), value);
             address += 4;
         }
+    }
+
+    /*
+        Helper method to compare 2 bit arrays
+    */
+    public boolean opcode_compare(Bit[] a, Bit[] b) {
+        if(a[0].getValue() == b[0].getValue()) {
+            if(a[1].getValue() == b[1].getValue()) {
+                if(a[2].getValue() == b[2].getValue()) {
+                    if(a[3].getValue() == b[3].getValue()) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }
