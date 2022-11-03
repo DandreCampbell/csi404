@@ -8,12 +8,7 @@ public class Assembler {
         for(int i = 0; i < instructions.length; i++) {
             String[] command = instructions[i].split(" ");
 
-            if(command[0].equalsIgnoreCase("move")) {
-                output[i] = "0001";
-                output[i] += get_register(command[1]);
-                output[i] += get_value(command[2]); // last 8 bits / value to be moved to an address
-            }
-            else if(command[0].equalsIgnoreCase("halt")) {
+            if(command[0].equalsIgnoreCase("halt")) {
                 output[i] = "0000000000000000";
             }
             else if(command[0].equalsIgnoreCase("interrupt")) {
@@ -23,6 +18,17 @@ public class Assembler {
                 else if(command[1].equals("1")) {
                     output[i] = "0010000000000001";
                 }
+            }
+            else if(command[0].equalsIgnoreCase("move")) {
+                output[i] = "0001";
+                output[i] += get_register(command[1]);
+                output[i] += get_value(command[2]); // last 8 bits / value to be moved to an address
+            }
+            else {
+                output[i] = get_alu_operation(command[0]);
+                output[i] += get_register(command[1]);
+                output[i] += get_register(command[2]);
+                output[i] += get_register(command[3]);
             }
         }
         
@@ -91,6 +97,43 @@ public class Assembler {
             else if(binary[i] == 0) {
                 output += "0";
             }
+        }
+
+        return output;
+    }
+
+    /*
+
+    */
+    public static String get_alu_operation(String arg) {
+        String output = "";
+
+        if(arg.equalsIgnoreCase("and")) {
+            output = "1000";
+        }
+        else if(arg.equalsIgnoreCase("or")) {
+            output = "1001";
+        }
+        else if(arg.equalsIgnoreCase("xor")) {
+            output = "1010";
+        }
+        else if(arg.equalsIgnoreCase("not")) {
+            output = "1011";
+        }
+        else if(arg.equalsIgnoreCase("leftShift")) {
+            output = "1100";
+        }
+        else if(arg.equalsIgnoreCase("rightShift")) {
+            output = "1101";
+        }
+        else if(arg.equalsIgnoreCase("add")) {
+            output = "1110";
+        }
+        else if(arg.equalsIgnoreCase("subtract")) {
+            output = "1111";
+        }
+        else if(arg.equalsIgnoreCase("multiply")) {
+            output = "0111";
         }
 
         return output;

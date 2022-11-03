@@ -17,7 +17,8 @@ public class AssemblerTest {
 
     public static void test_assemble2() {
         try {
-            String[] commands = {"interrupt 0", "move R15 100", "halt", "interrupt 1"};
+            String[] commands = {"and R1 R2 R7", "or R2 R3 R8", "xor R3 R4 R9",
+                    "not R4 R5 R10", "leftShift R5 R6 R11", "rightShift R6 R7 R12"};
 
             for(int i = 0; i < commands.length; i ++) {
                 System.out.printf("%s: %s \n", commands[i], Assembler.assemble(commands)[i]);
@@ -32,7 +33,7 @@ public class AssemblerTest {
 
     public static void test_assemble3() {
         try {
-            String[] commands = {"move R3 89", "interrupt 0", "move R7 44", "halt", "interrupt 1"};
+            String[] commands = {"add R1 R2 R3", "subtract R2 R3 R4", "multiply R3 R4 R5"};
 
             for(int i = 0; i < commands.length; i ++) {
                 System.out.printf("%s: %s \n", commands[i], Assembler.assemble(commands)[i]);
