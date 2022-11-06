@@ -29,7 +29,7 @@ public class AssemblerTest {
             throw new Exception("interrupt-0 : failed");
         }
         else {
-            System.out.printf("%s: %s \ninterrupt-0 : success\n", test_args[3], Assembler.assemble(test_args)[3]);
+            System.out.printf("%s -> %s \ninterrupt-0 : success\n", test_args[3], Assembler.assemble(test_args)[3]);
         }
 
         System.out.println();
@@ -44,42 +44,42 @@ public class AssemblerTest {
             throw new Exception("and assembly : failed");
         }
         else {
-            System.out.printf("%s: %s \nand assembly : success\n", test_args[0], Assembler.assemble(test_args)[0]);
+            System.out.printf("%s -> %s \nand assembly : success\n", test_args[0], Assembler.assemble(test_args)[0]);
         }
 
         if(Assembler.assemble(test_args)[1].equals("1001001000111000") != true) {
             throw new Exception("or assembly : failed");
         }
         else {
-            System.out.printf("%s: %s \nor assembly : success\n", test_args[1], Assembler.assemble(test_args)[1]);
+            System.out.printf("%s -> %s \nor assembly : success\n", test_args[1], Assembler.assemble(test_args)[1]);
         }
 
         if(Assembler.assemble(test_args)[2].equals("1010001101001001") != true) {
             throw new Exception("xor assembly : failed");
         }
         else {
-            System.out.printf("%s: %s \nxor assembly  : success\n", test_args[2], Assembler.assemble(test_args)[2]);
+            System.out.printf("%s -> %s \nxor assembly  : success\n", test_args[2], Assembler.assemble(test_args)[2]);
         }
 
         if(Assembler.assemble(test_args)[3].equals("1011010001011010") != true) {
             throw new Exception("not assembly  : failed");
         }
         else {
-            System.out.printf("%s: %s \nnot assembly  : success\n", test_args[3], Assembler.assemble(test_args)[3]);
+            System.out.printf("%s -> %s \nnot assembly  : success\n", test_args[3], Assembler.assemble(test_args)[3]);
         }
 
         if(Assembler.assemble(test_args)[4].equals("1100010101101011") != true) {
             throw new Exception("leftShift assembly  : failed");
         }
         else {
-            System.out.printf("%s: %s \nleftShift assembly  : success\n", test_args[4], Assembler.assemble(test_args)[4]);
+            System.out.printf("%s -> %s \nleftShift assembly  : success\n", test_args[4], Assembler.assemble(test_args)[4]);
         }
 
         if(Assembler.assemble(test_args)[5].equals("1101011001111100") != true) {
             throw new Exception("rightShift assembly  : failed");
         }
         else {
-            System.out.printf("%s: %s \nrightShift assembly  : success\n", test_args[5], Assembler.assemble(test_args)[5]);
+            System.out.printf("%s -> %s \nrightShift assembly  : success\n", test_args[5], Assembler.assemble(test_args)[5]);
         }
 
         System.out.println();
@@ -93,21 +93,21 @@ public class AssemblerTest {
             throw new Exception("add assembly : failed");
         }
         else {
-            System.out.printf("%s: %s \nand assembly : success\n", test_args[0], Assembler.assemble(test_args)[0]);
+            System.out.printf("%s -> %s \nadd assembly : success\n", test_args[0], Assembler.assemble(test_args)[0]);
         }
 
         if(Assembler.assemble(test_args)[1].equals("1111001000110100") != true) {
             throw new Exception("subtract assembly : failed");
         }
         else {
-            System.out.printf("%s: %s \nand assembly : success\n", test_args[1], Assembler.assemble(test_args)[1]);
+            System.out.printf("%s -> %s \nsubtract assembly : success\n", test_args[1], Assembler.assemble(test_args)[1]);
         }
 
         if(Assembler.assemble(test_args)[2].equals("0111001101000101") != true) {
             throw new Exception("multiply assembly : failed");
         }
         else {
-            System.out.printf("%s: %s \nand assembly : success\n", test_args[2], Assembler.assemble(test_args)[2]);
+            System.out.printf("%s -> %s \nmultiply assembly : success\n", test_args[2], Assembler.assemble(test_args)[2]);
         }
 
         System.out.println();
@@ -119,5 +119,7 @@ public class AssemblerTest {
         assemble_computer_commands();
         assemble_alu_1();
         assemble_alu_2();
+
+        System.out.println();
     }
 }
