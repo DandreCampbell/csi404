@@ -1,5 +1,6 @@
 public class AssemblerTest {
 
+    // Test Cases for Computer commands
     public static void assemble_computer_commands() throws Exception {
         String[] test_args = {"move R1 10", "halt", "interrupt 1", "interrupt 0"};
 
@@ -34,6 +35,7 @@ public class AssemblerTest {
         System.out.println();
     }
 
+    // Test Cases for Bit operations
     public static void assemble_alu_1() throws Exception {
         String[] test_args = {"and R1 R2 R7", "or R2 R3 R8", "xor R3 R4 R9",
                 "not R4 R5 R10", "leftShift R5 R6 R11", "rightShift R6 R7 R12"};
@@ -83,6 +85,7 @@ public class AssemblerTest {
         System.out.println();
     }
 
+    // Test Cases for Math operations
     public static void assemble_alu_2() throws Exception {
         String[] test_args = {"add R1 R2 R3", "subtract R2 R3 R4", "multiply R3 R4 R5"};
 

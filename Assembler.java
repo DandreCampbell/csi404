@@ -1,13 +1,20 @@
 public class Assembler {
 
-    //public static final String[] keywords = {"move", "halt", "interrupt"};
-
+    /*
+        Takes an array of string instructions as input. Converts
+        each instruction to a binary value that Computer
+        can use.
+     */
     public static String[] assemble(String[] instructions) {
         String[] output = new String[instructions.length];
 
         for(int i = 0; i < instructions.length; i++) {
             String[] command = instructions[i].split(" ");
 
+            /*
+                The instructions will only be converted if it is
+                a Computer instruction or ALU operation
+             */
             if(command[0].equalsIgnoreCase("halt")) {
                 output[i] = "0000000000000000";
             }
@@ -36,8 +43,8 @@ public class Assembler {
     }
 
     /*
-        Helper method for the move command.
-        Returns the register address for as a 4 bit string.
+        Helper method for the move command and the ALU.
+        Returns a register address as a 4 bit string.
     */
     public static String get_register(String arg) {
         String output = "";
@@ -72,7 +79,7 @@ public class Assembler {
     }
 
     /*
-        Helper method for move command.
+        Helper method for the move command and the ALU.
         Returns the value that'll be stored in a register
         as an 8 bit string.
     */
@@ -103,7 +110,7 @@ public class Assembler {
     }
 
     /*
-
+        Determines binary value for each ALU operation.
     */
     public static String get_alu_operation(String arg) {
         String output = "";
