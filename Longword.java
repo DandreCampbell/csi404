@@ -154,13 +154,13 @@ public class Longword {
     */
     public void set(int value) {
         int[] binary = new int[this.longword.length];
-        int temp = value;
+        int temp = Math.abs(value);
 
         // Convert value to binary
         int i = 0;
-        while(value > 0) {
-            binary[i] = value % 2;
-            value /= 2;
+        while(temp > 0) {
+            binary[i] = temp % 2;
+            temp /= 2;
             i++;
         }
 
@@ -175,13 +175,20 @@ public class Longword {
         }
 
         // If value is negative
-        if(temp < 0) {
+        if(value < 0) {
             Longword a = not();
             for(int j = 0; j < 31; j++) {
                 this.longword[j] = a.getBit(j);
             }
-            this.longword[0] = new Bit(true);
+            this.longword[31] = new Bit(true);
         }
-    } 
+    }
+
+    public boolean isNegative() {
+        if(this.longword[0].getValue() == true) {
+            return true;
+        }
+        return false;
+    }
 }
 

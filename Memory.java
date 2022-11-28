@@ -38,6 +38,10 @@ public class Memory {
         String output = "";
 
         for(int i = 0; i < 1024; i++) {
+            if((i % 8) == 0) {
+                output += "\n";
+            }
+
             if(this.storage[i].getValue() == true) {
                 output += "t,";
             }

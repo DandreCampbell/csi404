@@ -29,9 +29,56 @@ public class Assembler {
             else if(command[0].equalsIgnoreCase("move")) {
                 output[i] = "0001";
                 output[i] += get_register(command[1]);
-                output[i] += get_value(command[2]); // last 8 bits / value to be moved to an address
+                output[i] += get_value(command[2]); // last set of bits / value to be moved to an address
             }
-            else {
+            else if(command[0].equalsIgnoreCase("jump")) {
+                output[i] = "001100000000";
+                output[i] += get_register(command[1]);
+            }
+            else if(command[0].equalsIgnoreCase("compare")) {
+                output[i] = "01000000";
+                output[i] += get_register(command[1]);
+                output[i] += get_register(command[2]);
+            }
+            else if(command[0].contains("branch")) {
+                output[i] = "0101";
+
+                if(command[0].equalsIgnoreCase("branchiflessthan")) {
+                    output[i] += "0000";
+                    output[i] += get_value(command[1]);
+                }
+                else if(command[0].equalsIgnoreCase("branchifgreaterthan")) {
+                    output[i] += "0100";
+                    output[i] += get_value(command[1]);
+                }
+                else if(command[0].equalsIgnoreCase("branchifequal")) {
+                    output[i] += "1100";
+                    output[i] += get_value(command[1]);
+                }
+                else if(command[0].equalsIgnoreCase("branchifnotequal")) {
+                    output[i] += "1000";
+                    output[i] += get_value(command[1]);
+                }
+                else {
+                    System.out.println("Invalid branch statement");
+                }
+            }
+            else if(command[0].equalsIgnoreCase("push")) { // push 0000
+                output[i] = "011000000000";
+                output[i] += get_register(command[1]);
+            }
+            else if(command[0].equalsIgnoreCase("pop")) { // pop 0100
+                output[i] = "011001000000";
+                output[i] += get_register(command[1]);
+            }
+            else if(command[0].equalsIgnoreCase("call")) { // call 1000
+                output[i] = "01101000";
+                output[i] += get_call_register(command[1]);
+            }
+            else if(command[0].equalsIgnoreCase("return")) { // return 1100
+                output[i] = "0110110000000000";
+            }
+            else { // ALU operations
                 output[i] = get_alu_operation(command[0]);
                 output[i] += get_register(command[1]);
                 output[i] += get_register(command[2]);
@@ -51,8 +98,8 @@ public class Assembler {
         String temp_register = arg.replaceAll("R", "");
         int address = Integer.parseInt(temp_register);
 
-        // Must be within range of 16 possible registers
-        if(address > 15) {
+        // Must be within range of 16 possible registers | 0 to 15
+        if(address > 15 || address < 0) {
             output = "Address is out of range.";
         }
 
@@ -67,6 +114,38 @@ public class Assembler {
 
         // Converts binary array to a string
         for(i = 3; i >= 0; i--) {
+            if(binary[i] == 1) {
+                output += "1";
+            }
+            else if(binary[i] == 0) {
+                output += "0";
+            }
+        }
+
+        return output;
+    }
+
+    public static String get_call_register(String arg) {
+        String output = "";
+        String temp_register = arg.replaceAll("R", "");
+        int address = Integer.parseInt(temp_register);
+
+        // Must be within range of 16 possible registers | 0 to 15
+        if(address > 15 || address < 0) {
+            output = "Address is out of range.";
+        }
+
+        // Converts address to a binary array
+        int[] binary = new int[10];
+        int i = 0;
+        while(address > 0) {
+            binary[i] = address % 2;
+            address /= 2;
+            i++;
+        }
+
+        // Converts binary array to a string
+        for(i = 9; i >= 0; i--) {
             if(binary[i] == 1) {
                 output += "1";
             }
@@ -141,6 +220,9 @@ public class Assembler {
         }
         else if(arg.equalsIgnoreCase("multiply")) {
             output = "0111";
+        }
+        else {
+            System.out.println("Not a valid instruction.");
         }
 
         return output;

@@ -8,6 +8,8 @@ public class Main {
         //ALUTest.runTest();
         //MemoryTest.runTests();
         //CPUTest1.runTest();
-        AssemblerTest.runTest();
+        //AssemblerTest.runTest();
+        //CPUTest2.runTests();
+        CPUTest3.runTests();
     }
 }

@@ -92,11 +92,12 @@ public class LongwordTest {
     // Test case for not()
     public static void test_not() throws Exception {
         Longword test = new Longword(100);
+        String expected = "t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,f,f,t,t,f,t,t,";
         Longword result = test.not();
 
-        if(result.toString().equals("t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,f,f,t,t,f,t,t,")) {
+        if(result.toString().equals(expected)) {
             System.out.println("not() - Success");
-            System.out.println("Expected: t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,f,f,t,t,f,t,t,");
+            System.out.printf("Expected: %s\n", expected);
             System.out.printf("Result: %s \n", result.toString());
         }
         else {
